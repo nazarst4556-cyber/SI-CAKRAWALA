@@ -44,6 +44,7 @@ jobs:
         run: |
           flutter build web --release --base-href "/"
           echo "cakrawala-siber.id" > build/web/CNAME
+          cp build/web/index.html build/web/404.html
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5

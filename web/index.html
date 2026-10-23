@@ -15,6 +15,23 @@
     the `--base-href` argument provided to `flutter build`.
   -->
   <base href="$FLUTTER_BASE_HREF">
+  <script>
+    // Universal dynamic base href: handles GitHub Pages repo subpath (/SI-CAKRAWALA/)
+    // as well as custom root domain (https://cakrawala-siber.id/) and localhost
+    (function () {
+      var base = document.querySelector('base');
+      if (base) {
+        if (window.location.hostname.endsWith('github.io')) {
+          var segments = window.location.pathname.split('/').filter(Boolean);
+          if (segments.length > 0) {
+            base.setAttribute('href', '/' + segments[0] + '/');
+            return;
+          }
+        }
+        base.setAttribute('href', '/');
+      }
+    })();
+  </script>
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
